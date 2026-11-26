@@ -1,26 +1,88 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #eef2f0;
+  --foreground: #14201c;
+  --muted: #5b6b64;
+  --surface: #ffffff;
+  --surface-soft: #f3f6f4;
+  --border: rgba(20, 32, 28, 0.1);
+  --accent: #0f766e;
+  --accent-soft: rgba(15, 118, 110, 0.12);
+  --accent-contrast: #f7fffb;
+  --danger: #b42318;
+  --busy: #8a7560;
+  --past: #9aa59f;
+  --shadow: 0 18px 50px rgba(20, 32, 28, 0.1);
+  --page-glow: radial-gradient(
+      120% 80% at 10% -10%,
+      rgba(15, 118, 110, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      90% 70% at 100% 0%,
+      rgba(180, 140, 80, 0.16),
+      transparent 50%
+    ),
+    linear-gradient(180deg, #eef2f0 0%, #e4ebe7 100%);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-danger: var(--danger);
+  --color-busy: var(--busy);
+  --color-past: var(--past);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background: var(--page-glow);
+  background-attachment: fixed;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), sans-serif;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.card-enter {
+  animation: card-in 280ms ease-out both;
+}
+
+.fade-enter {
+  animation: soft-fade 220ms ease-out both;
 }
